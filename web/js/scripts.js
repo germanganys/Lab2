@@ -137,7 +137,7 @@ function clickCanvas(canvId, R) {
     var transf_y = R * (150 - y) / 130;
 
     $.ajax({
-        url: "checking",
+        url: "check",
         type: "POST",
         data: {"X": transf_x, "Y": transf_y, "R": R, "silent": "on"},
         success: function (data) {

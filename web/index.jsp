@@ -48,7 +48,7 @@
         <div class="container">
             <div class="card-deck">
                 <div class="card">
-                    <form class="form card-body" id="form" action="checking" method="post"
+                    <form class="form card-body" id="form" action="check" method="post"
                           onsubmit="return validate(this);">
 
                         <table class="table table-bordered radio_btn">
@@ -87,6 +87,7 @@
                         <br>
                         <small class="d-block text-left mt-3">
                             <input class="btn" type="submit" name="submit" value="Send" style="background-color: #6f42c1;color: white">
+                            <a href="check" class="btn">Show results</a>
                         </small>
                     </form>
                 </div>

@@ -1,15 +1,20 @@
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@WebServlet("*")
 public class ControllerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
+        String name = request.getPathInfo().substring(1);
+        if (name.equals("check"))
+            request.getServletContext().getRequestDispatcher("/check").forward(request, response);
+        else
+            request.getServletContext().getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -20,7 +25,7 @@ public class ControllerServlet extends HttpServlet {
         if (xString == null || yString == null || RString == null) {
             request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
-            request.getServletContext().getRequestDispatcher("/checking").forward(request, response);
+            request.getServletContext().getRequestDispatcher("/check").forward(request, response);
         }
     }
 

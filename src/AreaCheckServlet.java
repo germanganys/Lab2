@@ -9,11 +9,24 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AreaCheckServlet", urlPatterns = "/checking")
+@WebServlet(name = "AreaCheckServlet", urlPatterns = "/check")
 public class AreaCheckServlet extends HttpServlet {
 
     private ServletConfig config;
     private List<Point> list = null;
+
+    public static class Point {
+        double x;
+        double y;
+        int R;
+        boolean isInArea;
+
+        Point(double x, double y, int r) {
+            this.x = x;
+            this.y = y;
+            this.R = r;
+        }
+    }
 
     private static boolean checkArea(double x, double y, int R) {
         if (x <= 0 && y >= 0 && x * x + y * y <= R * R) {
@@ -40,6 +53,42 @@ public class AreaCheckServlet extends HttpServlet {
     @Override
     public ServletConfig getServletConfig() {
         return config;
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        StringBuilder data = new StringBuilder();
+        if (list != null) {
+            printPoints(data);
+        } else {
+            data.append("No Data");
+        }
+        request.setAttribute("data", data.toString());
+        getServletContext().getRequestDispatcher("/results.jsp").forward(request, response);
+    }
+
+    private void printPoints(StringBuilder data) {
+        for (Point p : list) {
+            data.append("<tr>");
+
+            data.append("<td>");
+            data.append(String.format("%.2f", p.x));
+            data.append("</td>");
+
+            data.append("<td>");
+            data.append(String.format("%.2f", p.y));
+            data.append("</td>");
+
+            data.append("<td>");
+            data.append(String.format("%d", p.R));
+            data.append("</td>");
+
+            data.append("<td>");
+            data.append(p.isInArea ? "Yes" : "No");
+            data.append("</td>");
+
+            data.append("</tr>");
+        }
     }
 
     @Override
@@ -70,46 +119,10 @@ public class AreaCheckServlet extends HttpServlet {
             out.print("{" + "\"in_area\":" + (list.get(list.size() - 1).isInArea ? "true" : "false") + "}");
             out.flush();
         } else {
-
             StringBuilder data = new StringBuilder();
-
-            for (Point p : list) {
-                data.append("<tr>");
-
-                data.append("<td>");
-                data.append(String.format(p.x + "", "%.2f"));
-                data.append("</td>");
-
-                data.append("<td>");
-                data.append(String.format(p.y + "", "%.2f"));
-                data.append("</td>");
-
-                data.append("<td>");
-                data.append(String.format(p.R + "", "%.2f"));
-                data.append("</td>");
-
-                data.append("<td>");
-                data.append(p.isInArea ? "Yes" : "No");
-                data.append("</td>");
-
-                data.append("</tr>");
-            }
+            printPoints(data);
             request.setAttribute("data", data.toString());
             getServletContext().getRequestDispatcher("/results.jsp").forward(request, response);
-        }
-    }
-
-
-    public static class Point {
-        double x;
-        double y;
-        int R;
-        boolean isInArea;
-
-        Point(double x, double y, int r) {
-            this.x = x;
-            this.y = y;
-            this.R = r;
         }
     }
 
