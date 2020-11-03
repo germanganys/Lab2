@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", function (event) {
-    drawCanvas("canvas", 1)
-});
+    drawCanvas("canvas", 1);
+    var buttons = $(".b");
+    var view = $(".x-panel");
 
+    buttons.click(function () {
+        view.val($(this).val())
+    });
+});
 
 function validate(_form) {
     var fail = false;
@@ -9,7 +14,7 @@ function validate(_form) {
     var Y = _form.Y.value;
     var R = _form.R.value;
 
-    if (Y <= -3 || Y >= 3 || isNaN(Y) || Y === "" || Y.length > 10) {
+    if (Y <= -3 || Y >= 5 || isNaN(Y) || Y === "" || Y.length > 10) {
         fail = "Y value is incorrect ! \n";
     }
 
@@ -31,32 +36,32 @@ function drawCanvas(id, r) {
 
     //прямоугольник
     context.beginPath();
-    context.rect(20, 150, 130, 65);
+    context.rect(20, 150, 130, 130);
     context.closePath();
-    context.strokeStyle = "#6f42c1";
-    context.fillStyle = "#6f42c1";
+    context.strokeStyle = "#ffe5dc";
+    context.fillStyle = "#ffe5dc";
     context.fill();
     context.stroke();
 
     // сектор
     context.beginPath();
     context.moveTo(150, 150);
-    context.arc(150, 150, 130, Math.PI, 3 * Math.PI / 2, false);
+    context.arc(150, 150, 130, 0, -Math.PI / 2, true);
     context.closePath();
-    context.strokeStyle = "#6f42c1";
-    context.fillStyle = "#6f42c1";
+    context.strokeStyle = "#ffe5dc";
+    context.fillStyle = "#ffe5dc";
     context.fill();
     context.stroke();
 
     //треугольник
     context.beginPath();
     context.moveTo(150, 150);
-    context.lineTo(150, 20);
+    context.lineTo(150, 215);
     context.lineTo(150 + 130, 150);
     context.lineTo(150, 150);
     context.closePath();
-    context.strokeStyle = "#6f42c1";
-    context.fillStyle = "#6f42c1";
+    context.strokeStyle = "#ffe5dc";
+    context.fillStyle = "#ffe5dc";
     context.fill();
     context.stroke();
 
@@ -69,6 +74,8 @@ function drawCanvas(id, r) {
     context.lineTo(145, 15);
     context.moveTo(150, 0);
     context.lineTo(155, 15);
+    context.strokeStyle = "#000000";
+    context.fillStyle = "#000000";
     context.fillText("Y", 160, 10);
     context.moveTo(0, 150);
     context.lineTo(300, 150);
@@ -143,6 +150,7 @@ function clickCanvas(canvId, R) {
         success: function (data) {
             console.log(data);
             drawPoint(canvId, x, y, data["in_area"]);
+            $(".tbl").append(data['data'])
         },
         error: function () {
             alert("Some error processing request")
