@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Lab 2</title>
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
 
     <style>
@@ -43,7 +43,7 @@
             ${table}
         </table>
         <br>
-        <a type="button" href="index.jsp" class="btn mx-auto">Back to home</a>
+        <a type="button" class="button" href="index.jsp">Back to home</a>
     </div>
 </main>
 </body>

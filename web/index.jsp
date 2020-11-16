@@ -9,8 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Lab 2</title>
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css"/>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -97,7 +96,7 @@
                         <input type="checkbox" class="r" value="5" onclick="drawCanvas('canvas', 5)">5</input>
                         <br>
                         <small class="d-block text-left mt-3">
-                            <input class="btn" type="submit" name="submit" value="Send">
+                            <input class="button" type="submit" name="submit" value="Send">
                             <a href="check" class="btn">Show results</a>
                         </small>
                     </form>
