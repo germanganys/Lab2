@@ -47,7 +47,6 @@ public class AreaCheckServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         try {
             if (!Arrays.asList("1", "2", "3", "4", "5").contains(request.getParameter("R")))
                 throw new Exception();
