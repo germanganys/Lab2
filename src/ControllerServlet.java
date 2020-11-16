@@ -7,12 +7,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet("*")
+@WebServlet("/")
 public class ControllerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String name = request.getPathInfo().substring(1);
+
         if (name.equals("check"))
             request.getServletContext().getRequestDispatcher("/check").forward(request, response);
         else {

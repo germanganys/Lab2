@@ -1,12 +1,14 @@
+R = 1;
 document.addEventListener("DOMContentLoaded", function (event) {
     drawCanvas("canvas", 1);
-    var buttons = $(".b");
-    var view = $(".x-panel");
-
-    buttons.click(function () {
-        view.val($(this).val())
-    });
+    $('.r').click(function () {
+        $(this).prop('checked', false);
+        R = $(this).val();
+        $("#r").val($(this).val())
+    })
 });
+
+
 
 function validate(_form) {
     var fail = false;
@@ -14,7 +16,7 @@ function validate(_form) {
     var Y = _form.Y.value;
     var R = _form.R.value;
 
-    if (Y <= -3 || Y >= 5 || isNaN(Y) || Y === "" || Y.length > 10) {
+    if (Y <= -5 || Y >= 5 || isNaN(Y) || Y === "" || Y.length > 5) {
         fail = "Y value is incorrect ! \n";
     }
 
@@ -36,7 +38,7 @@ function drawCanvas(id, r) {
 
     //прямоугольник
     context.beginPath();
-    context.rect(20, 150, 130, 130);
+    context.rect(20, 150 - 65, 130, 65);
     context.closePath();
     context.strokeStyle = "#ffe5dc";
     context.fillStyle = "#ffe5dc";
@@ -46,7 +48,7 @@ function drawCanvas(id, r) {
     // сектор
     context.beginPath();
     context.moveTo(150, 150);
-    context.arc(150, 150, 130, 0, -Math.PI / 2, true);
+    context.arc(150, 150, 65, 0, Math.PI / 2, false);
     context.closePath();
     context.strokeStyle = "#ffe5dc";
     context.fillStyle = "#ffe5dc";
@@ -56,8 +58,8 @@ function drawCanvas(id, r) {
     //треугольник
     context.beginPath();
     context.moveTo(150, 150);
-    context.lineTo(150, 215);
-    context.lineTo(150 + 130, 150);
+    context.lineTo(150, 150 - 130);
+    context.lineTo(280, 150);
     context.lineTo(150, 150);
     context.closePath();
     context.strokeStyle = "#ffe5dc";
@@ -131,7 +133,7 @@ function createCanvas(id, x, y, r) {
     context.stroke();
 }
 
-function clickCanvas(canvId, R) {
+function clickCanvas(canvId) {
     var elem = document.getElementById(canvId);
     var br = elem.getBoundingClientRect();
     var left = br.left;

@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Ilya Kovalenko">
     <title>Lab 2</title>
     <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css"/>
 
@@ -46,10 +44,6 @@
         </table>
         <br>
         <a type="button" href="index.jsp" class="btn mx-auto">Back to home</a>
-    </div>
-
-    <div class="container footer">
-        Copyright Ilya Kovalenko.
     </div>
 </main>
 </body>

@@ -8,8 +8,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Iliya Kovalenko">
     <title>Lab 2</title>
     <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.1/dist/terminal.min.css"/>
 
@@ -38,7 +36,7 @@
 <main role="main" class="container">
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-lg">
         <div class="lh-100">
-            <h2 class="mb-0 text-white lh-100">Web Laboratory Ilya Kovalenko P3210 10782</h2>
+            <h2 class="mb-0 text-white lh-100">Бондаренко Данила Эдуардович P3210 10814</h2>
         </div>
     </div>
 
@@ -49,38 +47,54 @@
                 <div class="card">
                     <form class="form card-body" id="form" action="check" method="post"
                           onsubmit="return validate(this);">
+                        <label> X = </label>
                         <table class="table radio_btn">
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col"><input class="btn b" type="button" id="-3" value="-3"></th>
-                                <th scope="col"><input class="btn b" type="button" id="-2" value="-2"></th>
-                                <th scope="col"><input class="btn b" type="button" id="-1" value="-3"></th>
+                                <td>
+                                    <input type="radio" name="X" value="-4">-4</input>
+                                </td>
+                                <td>
+                                    <input type="radio" name="X" value="-3">-3</input>
+                                </td>
+
+                                <td>
+                                    <input type="radio" name="X" value="-2">-2</input>
+                                </td>
                             </tr>
                             <tr>
-                                <td scope="col"> Y =</td>
-                                <th scope="col"><input class="btn b" type="button" id="0" value="0"></th>
-                                <th scope="col"><input class="btn b" type="button" id="1" value="1"></th>
-                                <th scope="col"><input class="btn b" type="button" id="2" value="2"></th>
+                                <td>
+                                    <input type="radio" name="X" value="-1">-1</input>
+                                </td>
+                                <td>
+                                    <input type="radio" name="X" value="0" checked>-0</input>
+                                </td>
+                                <td>
+                                    <input type="radio" name="X" value="1">1</input>
+                                </td>
                             </tr>
                             <tr>
-                                <th scope="col"></th>
-                                <th scope="col"><input class="btn b" type="button" id="3" value="3"></th>
-                                <th scope="col"><input class="btn b" type="button" id="4" value="4"></th>
-                                <th scope="col"><input class="btn b" type="button" id="5" value="5"></th>
+                                <td>
+                                    <input type="radio" name="X" value="2">2</input>
+                                </td>
+                                <td>
+                                    <input type="radio" name="X" value="3">3</input>
+                                </td>
+                                <td>
+                                    <input type="radio" name="X" value="4">4</input>
+                                </td>
                             </tr>
                         </table>
-                        <input type="number" class="x-panel" name="X" value="0" readonly="true" REQUIRED>
-                        <br><br>
 
-                        <label for="X"> X = </label>
-                        <input class="input_X" id="X" type="text" name="Y" placeholder="(-3 ... 5)" REQUIRED><br>
+                        <label> Y = </label>
+                        <input type="text" name="Y" id="Y" placeholder="(-5...5)">
 
                         <label> R = </label>
-                        <input type="radio" name="R" CHECKED value="1" onclick="drawCanvas('canvas', 1)">1</input>
-                        <input type="radio" name="R" value="1.5" onclick="drawCanvas('canvas', 1.5)">1.5</input>
-                        <input type="radio" name="R" value="2" onclick="drawCanvas('canvas', 2)">2</input>
-                        <input type="radio" name="R" value="2.5" onclick="drawCanvas('canvas', 2.5)">2.5</input>
-                        <input type="radio" name="R" value="3" onclick="drawCanvas('canvas', 3)">3</input>
+                        <input type="text" name="R" id="r" value="1" readonly>
+                        <input type="checkbox" class="r" value="1" onclick="drawCanvas('canvas', 1)">1</input>
+                        <input type="checkbox" class="r" value="2" onclick="drawCanvas('canvas', 2)">2</input>
+                        <input type="checkbox" class="r" value="3" onclick="drawCanvas('canvas', 3)">3</input>
+                        <input type="checkbox" class="r" value="4" onclick="drawCanvas('canvas', 4)">4</input>
+                        <input type="checkbox" class="r" value="5" onclick="drawCanvas('canvas', 5)">5</input>
                         <br>
                         <small class="d-block text-left mt-3">
                             <input class="btn" type="submit" name="submit" value="Send">
@@ -92,7 +106,7 @@
                 <div class="card">
                     <div class="card-body"
                          style="min-height: 300px;min-width: 300px; max-height: 300px;max-width: 300px">
-                        <canvas id="canvas" onclick="clickCanvas('canvas', document.getElementById('form').R.value)"
+                        <canvas id="canvas" onclick="clickCanvas('canvas')"
                                 style="background-color:#ffffff;" width="300"
                                 height="300"></canvas>
                     </div>
